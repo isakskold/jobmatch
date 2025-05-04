@@ -25,7 +25,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             <button
               onClick={() => router.push("/dashboard")}
-              className="p-6 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors group"
+              className="p-6 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors group cursor-pointer"
             >
               <div className="text-blue-600 text-2xl font-semibold mb-2 group-hover:text-blue-700">
                 I&apos;m Seeking Jobs
@@ -37,7 +37,7 @@ export default function Home() {
 
             <button
               onClick={() => router.push("/recruiting")}
-              className="p-6 bg-green-50 hover:bg-green-100 rounded-lg transition-colors group"
+              className="p-6 bg-green-50 hover:bg-green-100 rounded-lg transition-colors group cursor-pointer"
             >
               <div className="text-green-600 text-2xl font-semibold mb-2 group-hover:text-green-700">
                 I&apos;m Recruiting

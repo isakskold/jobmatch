@@ -22,7 +22,7 @@ export default function Dashboard() {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`
-                  whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm
+                  whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm cursor-pointer
                   ${
                     activeTab === tab
                       ? "border-blue-500 text-blue-600"

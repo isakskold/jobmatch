@@ -290,7 +290,7 @@ export default function Recruiting() {
                 <button
                   type="button"
                   onClick={() => setIsSkillsExpanded(!isSkillsExpanded)}
-                  className="w-full flex items-center text-left mb-2"
+                  className="w-full flex items-center text-left mb-2 cursor-pointer"
                 >
                   <svg
                     className={`h-5 w-5 text-gray-500 transform transition-transform duration-200 mr-2 ${
@@ -344,7 +344,7 @@ export default function Recruiting() {
                 <button
                   type="button"
                   onClick={() => setIsTraitsExpanded(!isTraitsExpanded)}
-                  className="w-full flex items-center text-left mb-2"
+                  className="w-full flex items-center text-left mb-2 cursor-pointer"
                 >
                   <svg
                     className={`h-5 w-5 text-gray-500 transform transition-transform duration-200 mr-2 ${
@@ -406,17 +406,31 @@ export default function Recruiting() {
               Matching Candidates
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-              {mockCandidates
-                .sort((a, b) => b.match - a.match)
-                .map((candidate, index) => (
+              {(() => {
+                const sorted = [...mockCandidates].sort(
+                  (a, b) => b.match - a.match
+                );
+                let displayOrder = sorted;
+                if (sorted.length === 3) {
+                  displayOrder = [sorted[1], sorted[0], sorted[2]];
+                }
+                return displayOrder.map((candidate, index) => (
                   <Card
                     key={candidate.id}
                     className={`hover:shadow-md transition-shadow ${
                       index === 1 ? "md:scale-110 z-10" : "md:scale-95"
                     }`}
                   >
-                    <div className="flex items-start space-x-4">
-                      <div className="relative w-12 h-12 rounded-full overflow-hidden">
+                    <div className="flex flex-col items-center">
+                      <div className="w-full flex flex-wrap gap-x-[30%] gap-y-2 justify-between items-center mb-4">
+                        <h3 className="text-lg mx-auto font-semibold text-gray-900">
+                          {candidate.name}
+                        </h3>
+                        <div className="bg-green-100 mx-auto text-green-800 px-3 py-1 rounded-full text-sm font-medium whitespace-nowrap">
+                          {candidate.match}% Match
+                        </div>
+                      </div>
+                      <div className="relative w-24 h-24 rounded-full overflow-hidden mb-4">
                         <Image
                           src={candidate.image}
                           alt={candidate.name}
@@ -424,21 +438,11 @@ export default function Recruiting() {
                           className="object-cover"
                         />
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <h3 className="text-lg font-semibold text-gray-900 truncate">
-                              {candidate.name}
-                            </h3>
-                            <p className="text-gray-600 text-sm">
-                              {candidate.title}
-                            </p>
-                          </div>
-                          <div className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-                            {candidate.match}% Match
-                          </div>
-                        </div>
-                        <p className="text-sm text-gray-600 mt-2">
+                      <div className="w-full">
+                        <p className="text-gray-600 text-sm mb-2">
+                          {candidate.title}
+                        </p>
+                        <p className="text-sm text-gray-600">
                           <span className="font-medium">Experience:</span>{" "}
                           {candidate.experience}
                         </p>
@@ -464,7 +468,8 @@ export default function Recruiting() {
                       <Button variant="outline">View Profile</Button>
                     </div>
                   </Card>
-                ))}
+                ));
+              })()}
             </div>
           </div>
         )}

@@ -14,7 +14,7 @@ export default function Header({ title, showBackButton = true }: HeaderProps) {
           {showBackButton && (
             <Link
               href="/"
-              className="text-blue-600 hover:text-blue-800 transition-colors"
+              className="text-blue-600 hover:text-blue-800 transition-colors cursor-pointer"
             >
               Back to Home
             </Link>
