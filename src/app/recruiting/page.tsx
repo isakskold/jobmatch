@@ -435,7 +435,14 @@ export default function Recruiting() {
                           src={candidate.image}
                           alt={candidate.name}
                           fill
+                          sizes="(max-width: 768px) 96px, 96px"
                           className="object-cover"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                              candidate.name
+                            )}&background=random`;
+                          }}
                         />
                       </div>
                       <div className="w-full">
