@@ -31,7 +31,7 @@ export default function Home() {
                 I&apos;m Seeking Jobs
               </div>
               <p className="text-gray-600">
-                Find opportunities that match your skills and career goals
+                Set up a profile for recruiters to find you
               </p>
             </button>
 
@@ -43,7 +43,8 @@ export default function Home() {
                 I&apos;m Recruiting
               </div>
               <p className="text-gray-600">
-                Post jobs and find the perfect candidates for your team
+                Enter your job requirements and we&apos;ll find the perfect
+                candidates for you
               </p>
             </button>
           </div>
