@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
-import Button from "@/components/Button";
 import Card from "@/components/Card";
 import PageLayout from "@/components/PageLayout";
 
@@ -29,7 +28,7 @@ export default function Home() {
               className="p-6 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors group"
             >
               <div className="text-blue-600 text-2xl font-semibold mb-2 group-hover:text-blue-700">
-                I'm Seeking Jobs
+                I&apos;m Seeking Jobs
               </div>
               <p className="text-gray-600">
                 Find opportunities that match your skills and career goals
@@ -41,7 +40,7 @@ export default function Home() {
               className="p-6 bg-green-50 hover:bg-green-100 rounded-lg transition-colors group"
             >
               <div className="text-green-600 text-2xl font-semibold mb-2 group-hover:text-green-700">
-                I'm Recruiting
+                I&apos;m Recruiting
               </div>
               <p className="text-gray-600">
                 Post jobs and find the perfect candidates for your team

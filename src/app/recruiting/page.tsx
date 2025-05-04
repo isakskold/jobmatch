@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Button from "@/components/Button";
 import Card from "@/components/Card";
 import PageLayout from "@/components/PageLayout";
-import Link from "next/link";
+import Image from "next/image";
 
 // Mock data for candidates with profile pictures
 const mockCandidates = [
@@ -416,11 +416,14 @@ export default function Recruiting() {
                     }`}
                   >
                     <div className="flex items-start space-x-4">
-                      <img
-                        src={candidate.image}
-                        alt={candidate.name}
-                        className="w-16 h-16 rounded-full object-cover border-2 border-gray-100"
-                      />
+                      <div className="relative w-12 h-12 rounded-full overflow-hidden">
+                        <Image
+                          src={candidate.image}
+                          alt={candidate.name}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex justify-between items-start">
                           <div>
