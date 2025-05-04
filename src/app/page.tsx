@@ -18,8 +18,8 @@ export default function Home() {
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
             Connect with opportunities that match your skills and aspirations.
-            Whether you're seeking your next career move or looking to build
-            your team, we've got you covered.
+            Whether you&apos;re seeking your next career move or looking to
+            build your team, we&apos;ve got you covered.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
