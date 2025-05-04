@@ -161,6 +161,13 @@ export default function Recruiting() {
   const [selectedTraits, setSelectedTraits] = useState<string[]>([]);
   const [isSkillsExpanded, setIsSkillsExpanded] = useState(false);
   const [isTraitsExpanded, setIsTraitsExpanded] = useState(false);
+  const [failedImages, setFailedImages] = useState<Set<number>>(new Set());
+
+  const getFallbackImage = (name: string) => {
+    return `https://ui-avatars.com/api/?name=${encodeURIComponent(
+      name
+    )}&background=random`;
+  };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -432,17 +439,22 @@ export default function Recruiting() {
                       </div>
                       <div className="relative w-24 h-24 rounded-full overflow-hidden mb-4">
                         <Image
-                          src={candidate.image}
+                          src={
+                            failedImages.has(candidate.id)
+                              ? getFallbackImage(candidate.name)
+                              : candidate.image
+                          }
                           alt={candidate.name}
                           fill
                           sizes="(max-width: 768px) 96px, 96px"
                           className="object-cover"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(
-                              candidate.name
-                            )}&background=random`;
+                          onError={() => {
+                            setFailedImages(
+                              (prev) => new Set([...prev, candidate.id])
+                            );
                           }}
+                          priority={true}
+                          unoptimized
                         />
                       </div>
                       <div className="w-full">
