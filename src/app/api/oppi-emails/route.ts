@@ -162,21 +162,22 @@ export async function POST(req: NextRequest) {
   } catch (error: unknown) {
     console.error("Error in POST /api/oppi-emails:", error);
     let message = "Error processing request";
+    let errorDetail: string | undefined = undefined;
     if (
-      error &&
       typeof error === "object" &&
+      error !== null &&
       "message" in error &&
-      typeof (error as any).message === "string"
+      typeof (error as { message?: unknown }).message === "string"
     ) {
-      message = (error as any).message;
+      message = (error as { message: string }).message;
+      errorDetail = (error as { message: string }).message;
+    } else {
+      errorDetail = String(error);
     }
     return NextResponse.json(
       {
         message,
-        error:
-          typeof error === "object" && error && "message" in error
-            ? (error as any).message
-            : String(error),
+        error: errorDetail,
       },
       { status: 500 }
     );
