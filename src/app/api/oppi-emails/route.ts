@@ -85,8 +85,7 @@ async function validateEmail(
     }
 
     return { valid: true };
-  } catch (error) {
-    // Don't fall back to basic validation on error - fail closed
+  } catch (error: unknown) {
     console.error("Email validation error:", error);
     return { valid: false, message: "Email validation failed" };
   }
@@ -160,10 +159,25 @@ export async function POST(req: NextRequest) {
     );
 
     return incrementSessionCount(response, currentCount);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error in POST /api/oppi-emails:", error);
+    let message = "Error processing request";
+    if (
+      error &&
+      typeof error === "object" &&
+      "message" in error &&
+      typeof (error as any).message === "string"
+    ) {
+      message = (error as any).message;
+    }
     return NextResponse.json(
-      { message: "Error processing request", error: error.message },
+      {
+        message,
+        error:
+          typeof error === "object" && error && "message" in error
+            ? (error as any).message
+            : String(error),
+      },
       { status: 500 }
     );
   }

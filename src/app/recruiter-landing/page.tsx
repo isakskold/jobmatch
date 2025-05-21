@@ -33,7 +33,7 @@ export default function RecruiterLandingPage() {
         return;
       }
       setSubmitted(true);
-    } catch (err) {
+    } catch {
       setError("Network error. Please try again later.");
     }
   };
@@ -52,7 +52,7 @@ export default function RecruiterLandingPage() {
           </p>
           {submitted ? (
             <div className="text-green-600 font-semibold text-lg">
-              Thank you! You'll be notified when we go live.
+              Thank you! You&apos;ll be notified when we go live.
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
