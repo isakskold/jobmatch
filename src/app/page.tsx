@@ -10,18 +10,18 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <Header title="Oppi" showBackButton={false} />
+      <Header title="Opi" showBackButton={false} />
       <PageLayout>
         <Card className="text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">
-            Welcome to Oppi
+            Welcome to Opi
           </h2>
           <p className="text-lg text-gray-600 mb-4 max-w-2xl mx-auto">
             <span className="font-semibold text-blue-700">
               Service in Progress:
             </span>{" "}
             We&apos;re working hard to launch{" "}
-            <span className="font-bold">Oppi</span> soon! Choose your path below
+            <span className="font-bold">Opi</span> soon! Choose your path below
             to subscribe for early access notifications. You&apos;ll be the
             first to know when we go live.
           </p>
@@ -36,7 +36,7 @@ export default function Home() {
               </div>
               <p className="text-gray-600">
                 Subscribe to get notified when you can set up your profile and
-                get matched to jobs
+                get let recruiters know you&apos;re available
               </p>
             </button>
 
@@ -48,8 +48,8 @@ export default function Home() {
                 I&apos;m Recruiting
               </div>
               <p className="text-gray-600">
-                Subscribe to get notified when you can post jobs and connect
-                with top talent
+                Subscribe to get notified when you can start using this service
+                to find the right talent for your business or clients
               </p>
             </button>
           </div>
