@@ -44,7 +44,7 @@ export default function RecruiterLanding() {
             Get Started
           </h2>
           <p className="text-gray-600 mb-6">
-            Create your organization's profile and start connecting with
+            Create your organization&apos;s profile and start connecting with
             qualified candidates who match your requirements.
           </p>
           <Link

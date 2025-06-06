@@ -44,7 +44,7 @@ export default function Home() {
               </div>
               <p className="text-gray-600">
                 Access a pool of qualified candidates and find the perfect match
-                for your organization's needs
+                for your organization&apos;s needs
               </p>
             </button>
           </div>
