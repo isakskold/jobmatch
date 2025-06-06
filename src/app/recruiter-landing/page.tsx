@@ -4,11 +4,14 @@ import Header from "@/components/Header";
 import Card from "@/components/Card";
 import PageLayout from "@/components/PageLayout";
 import Button from "@/components/Button";
+import IndustrySelect from "@/components/IndustrySelect";
 
 export default function RecruiterLandingPage() {
   const [email, setEmail] = useState("");
+  const [selectedIndustry, setSelectedIndustry] = useState<string>("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,12 +19,21 @@ export default function RecruiterLandingPage() {
       setError("Please enter a valid email address.");
       return;
     }
+    if (!selectedIndustry) {
+      setError("Please select an industry.");
+      return;
+    }
     setError("");
+    setIsLoading(true);
     try {
       const res = await fetch("/api/oppi-emails", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, type: "recruiter" }),
+        body: JSON.stringify({
+          email,
+          type: "recruiter",
+          industry: selectedIndustry,
+        }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -35,6 +47,8 @@ export default function RecruiterLandingPage() {
       setSubmitted(true);
     } catch {
       setError("Network error. Please try again later.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -55,7 +69,12 @@ export default function RecruiterLandingPage() {
               Thank you! You&apos;ll be notified when we go live.
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <IndustrySelect
+                selectedIndustry={selectedIndustry}
+                onIndustryChange={setSelectedIndustry}
+                colorScheme="green"
+              />
               <input
                 type="email"
                 value={email}
@@ -65,9 +84,48 @@ export default function RecruiterLandingPage() {
                 required
               />
               {error && <div className="text-red-500 text-sm">{error}</div>}
-              <Button type="submit" fullWidth variant="secondary">
-                Notify Me
-              </Button>
+              <div className="relative group">
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="secondary"
+                  disabled={!selectedIndustry || isLoading}
+                  className="disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isLoading ? (
+                    <div className="flex items-center justify-center">
+                      <svg
+                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                      </svg>
+                      Processing...
+                    </div>
+                  ) : (
+                    "Notify Me"
+                  )}
+                </Button>
+                {!selectedIndustry && !isLoading && (
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-900 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    Please select an industry before submitting
+                  </div>
+                )}
+              </div>
             </form>
           )}
         </Card>

@@ -102,7 +102,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { email, type } = await req.json();
+    const { email, type, industry } = await req.json();
 
     // Validate email format and existence
     const emailValidation = await validateEmail(email);
@@ -129,6 +129,12 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+    if (!industry || typeof industry !== "string") {
+      return NextResponse.json(
+        { message: "Industry is required" },
+        { status: 400 }
+      );
+    }
 
     // Check if email + type combination already exists
     const getCommand = new GetCommand({
@@ -148,7 +154,7 @@ export async function POST(req: NextRequest) {
 
     const command = new PutCommand({
       TableName: "oppi-emails",
-      Item: { email, type },
+      Item: { email, type, industry },
     });
     await ddbDocClient.send(command);
 
