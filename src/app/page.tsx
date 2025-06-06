@@ -17,13 +17,8 @@ export default function Home() {
             Welcome to Opi
           </h2>
           <p className="text-lg text-gray-600 mb-4 max-w-2xl mx-auto">
-            <span className="font-semibold text-blue-700">
-              Service in Progress:
-            </span>{" "}
-            We&apos;re working hard to launch{" "}
-            <span className="font-bold">Opi</span> soon! Choose your path below
-            to subscribe for early access notifications. You&apos;ll be the
-            first to know when we go live.
+            Connect with the right opportunities or find the perfect talent for
+            your organization. Choose your role below to get started.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto mt-8">
@@ -32,11 +27,11 @@ export default function Home() {
               className="p-6 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors group cursor-pointer border border-blue-200"
             >
               <div className="text-blue-600 text-2xl font-semibold mb-2 group-hover:text-blue-700">
-                I&apos;m Seeking Jobs
+                Job Seeker
               </div>
               <p className="text-gray-600">
-                Subscribe to get notified when you can set up your profile and
-                get let recruiters know you&apos;re available
+                Create your profile, showcase your skills, and connect with
+                opportunities that match your career goals
               </p>
             </button>
 
@@ -45,11 +40,11 @@ export default function Home() {
               className="p-6 bg-green-50 hover:bg-green-100 rounded-lg transition-colors group cursor-pointer border border-green-200"
             >
               <div className="text-green-600 text-2xl font-semibold mb-2 group-hover:text-green-700">
-                I&apos;m Recruiting
+                Recruiter
               </div>
               <p className="text-gray-600">
-                Subscribe to get notified when you can start using this service
-                to find the right talent for your business or clients
+                Access a pool of qualified candidates and find the perfect match
+                for your organization's needs
               </p>
             </button>
           </div>
