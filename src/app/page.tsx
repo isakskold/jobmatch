@@ -1,13 +1,9 @@
-"use client";
-
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Card from "@/components/Card";
 import PageLayout from "@/components/PageLayout";
 
 export default function Home() {
-  const router = useRouter();
-
   return (
     <div className="min-h-screen">
       <Header title="Opi" showBackButton={false} />
@@ -22,9 +18,9 @@ export default function Home() {
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto mt-8">
-            <button
-              onClick={() => router.push("/jobseeker-landing")}
-              className="p-6 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors group cursor-pointer border border-blue-200"
+            <Link
+              href="/jobseeker-landing"
+              className="p-6 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors group cursor-pointer border border-blue-200 block"
             >
               <div className="text-blue-600 text-2xl font-semibold mb-2 group-hover:text-blue-700">
                 Job Seeker
@@ -33,11 +29,11 @@ export default function Home() {
                 Create your profile, showcase your skills, and connect with
                 opportunities that match your career goals
               </p>
-            </button>
+            </Link>
 
-            <button
-              onClick={() => router.push("/recruiter-landing")}
-              className="p-6 bg-green-50 hover:bg-green-100 rounded-lg transition-colors group cursor-pointer border border-green-200"
+            <Link
+              href="/recruiter-landing"
+              className="p-6 bg-green-50 hover:bg-green-100 rounded-lg transition-colors group cursor-pointer border border-green-200 block"
             >
               <div className="text-green-600 text-2xl font-semibold mb-2 group-hover:text-green-700">
                 Recruiter
@@ -46,7 +42,7 @@ export default function Home() {
                 Access a pool of qualified candidates and find the perfect match
                 for your organization&apos;s needs
               </p>
-            </button>
+            </Link>
           </div>
         </Card>
       </PageLayout>

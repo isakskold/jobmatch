@@ -9,7 +9,7 @@ interface LandingLayoutProps {
 export default function LandingLayout({ children }: LandingLayoutProps) {
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header title="Opi" showBackButton={true} />
+      <Header title="Opi" showBackButton={true} signIn={true} />
       <PageLayout>{children}</PageLayout>
     </div>
   );

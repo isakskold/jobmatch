@@ -1,33 +1,10 @@
-"use client";
-
-import { Authenticator } from "@aws-amplify/ui-react";
-import { Amplify } from "aws-amplify";
-import outputs from "../../../amplify_outputs.json";
-import "@aws-amplify/ui-react/styles.css";
-import Header from "@/components/Header";
-import PageLayout from "@/components/PageLayout";
-
-Amplify.configure(outputs);
+// src/app/(protected)/layout.tsx
+import { AuthenticatedLayout } from "./components/AuthenticatedLayout";
 
 export default function ProtectedLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <Authenticator>
-        {({ signOut, user }) => {
-          return (
-            <div>
-              {user && (
-                <Header title="Opi" showBackButton={true} signOut={signOut} />
-              )}
-              <PageLayout>{children}</PageLayout>
-            </div>
-          );
-        }}
-      </Authenticator>
-    </div>
-  );
+  return <AuthenticatedLayout>{children}</AuthenticatedLayout>;
 }
