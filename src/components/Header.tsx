@@ -4,7 +4,7 @@ interface HeaderProps {
   title: string;
   showBackButton?: boolean;
   signOut?: () => void;
-  signIn?: () => void;
+  signIn?: boolean;
 }
 
 export default function Header({
