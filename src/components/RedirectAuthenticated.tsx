@@ -27,7 +27,7 @@ export default function RedirectAuthenticated({
     try {
       await getCurrentUser();
       setIsAuthenticated(true);
-    } catch (error) {
+    } catch {
       setIsAuthenticated(false);
     } finally {
       setLoading(false);
