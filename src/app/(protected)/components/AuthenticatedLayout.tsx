@@ -95,7 +95,7 @@ export function AuthenticatedLayout({
         {({ signOut, user }) => (
           <div>
             {user && (
-              <Header title="Opi" showBackButton={true} signOut={signOut} />
+              <Header title="Opi" showBackButton={false} signOut={signOut} />
             )}
             <PageLayout>{children}</PageLayout>
           </div>

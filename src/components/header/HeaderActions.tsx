@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 interface HeaderActionsProps {
   showBackButton?: boolean;
@@ -14,21 +14,11 @@ export function HeaderActions({
   signOut,
   signIn,
 }: HeaderActionsProps) {
-  const pathname = usePathname();
   const router = useRouter();
 
   const handleSignIn = () => {
     if (signIn) {
-      // If we're on recruiter landing, go to recruiter auth
-      // If we're on seeker landing, go to seeker auth
-      const isRecruiterLanding = pathname.includes("recruiter-landing");
-      const isSeekerLanding = pathname.includes("jobseeker-landing");
-
-      if (isRecruiterLanding) {
-        router.push("/recruiter");
-      } else if (isSeekerLanding) {
-        router.push("/jobseeker");
-      }
+      router.push("/auth");
     }
   };
 
